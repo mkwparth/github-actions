@@ -26,5 +26,8 @@ jobs:
         run: npm run build
         working-directory: src/src
       
+      - name: Make custom test executable
+        run: chmod +x scripts/custom_react_test.sh
+      
       - name: Run custom React test
         run: ./scripts/custom_react_test.sh
