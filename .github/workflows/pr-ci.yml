@@ -20,11 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: frontend
+        working-directory: src/src
 
       - name: Build React app
         run: npm run build
-        working-directory: frontend
+        working-directory: src/src
       
       - name: Run custom React test
         run: ./scripts/custom_react_test.sh
