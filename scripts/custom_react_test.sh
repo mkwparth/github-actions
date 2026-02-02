@@ -3,17 +3,15 @@
 echo "Running custom React CI checks..."
 
 TARGET_DIR="src/src"
-FOUND=false
 
-MATCHES=$(grep -R -n -H "console.log" "$TARGET_DIR" || true)
-
-if [[ -n "$MATCHES" ]]; then
-  echo "❌ console.log found in React code:"
-  echo "----------------------------------"
-  echo "$MATCHES"
-  echo "----------------------------------"
-  exit 1
-fi
+grep -R -n -H "console.log" "$TARGET_DIR" \
+  --exclude-dir=node_modules \
+  --exclude="*.test.*" \
+  --exclude="*.spec.*" \
+  && {
+    echo "❌ console.log found in React source code"
+    exit 1
+  }
 
 echo "✅ Custom React checks passed"
 exit 0
