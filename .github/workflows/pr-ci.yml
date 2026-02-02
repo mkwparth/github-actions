@@ -19,11 +19,9 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: src
         run: npm install
 
       - name: Build React app
-        working-directory: src
         run: npm run build
 
       - name: Run custom React test
